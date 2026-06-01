@@ -30,6 +30,7 @@ from gameboy_worlds.emulation.pokemon.trackers import (
     PokemonRedBoughtPotionAtPewterPokemartTestTracker,
     PokemonRedUsedPotionOnCharmanderTestTracker,
     PokemonRedOpenMapTestTracker,
+    PokemonPrismOpenPokegearTestTracker,
 )
 from gameboy_worlds.emulation.pokemon.emulators import PokemonEmulator
 
@@ -92,6 +93,7 @@ AVAILABLE_STATE_TRACKERS: Dict[str, Dict[str, Type[StateTracker]]] = {
     },
     "pokemon_prism": {
         "default": PokemonOCRTracker,
+        "open_pokegear_test": PokemonPrismOpenPokegearTestTracker,
     },
 }
 """ Mapping of game names to their available StateTracker classes with string identifiers. """

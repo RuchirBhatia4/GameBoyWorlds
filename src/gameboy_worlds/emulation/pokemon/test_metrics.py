@@ -1,6 +1,7 @@
 from typing import Optional
 
 from gameboy_worlds.emulation.pokemon.parsers import PokemonRedStateParser
+from gameboy_worlds.emulation.pokemon.parsers import PokemonPrismStateParser
 from gameboy_worlds.emulation.tracker import (
     RegionMatchTerminationOnlyMetric,
     TerminationMetric,
@@ -140,5 +141,23 @@ class OpenMapTerminateMetric(TerminationMetric):
                 frame, "map_bottom_right"
             )
             if in_map:
+                return True
+        return False
+
+
+class OpenPrismPokegearTerminateMetric(TerminationMetric):
+    REQUIRED_PARSER = PokemonPrismStateParser
+
+    def determine_terminated(
+        self, current_frame: np.ndarray, recent_frames: Optional[np.ndarray]
+    ) -> bool:
+        all_frames = [current_frame]
+        if recent_frames is not None:
+            all_frames = recent_frames
+        for frame in all_frames:
+            self.state_parser: PokemonPrismStateParser
+            if self.state_parser.named_region_matches_target(
+                frame, "pokegear_top_left"
+            ):
                 return True
         return False
