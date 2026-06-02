@@ -20,7 +20,7 @@ from gameboy_worlds.emulation.pokemon.test_metrics import (
     BoughtPotionAtPewterPokemartTerminateMetric,
     UsedPotionOnCharmanderTerminateMetric,
     OpenMapTerminateMetric,
-    OpenPrismPokegearTerminateMetric,
+    OpenPrismYouStatusCardTerminateMetric,
 )
 
 from gameboy_worlds.emulation.pokemon.base_metrics import (
@@ -219,10 +219,10 @@ class PokemonRedOpenMapTestTracker(PokemonTestTracker):
     SUBGOAL_METRIC = DummySubGoalMetric
 
 
-class PokemonPrismOpenPokegearTestTracker(PokemonTestTracker):
+class PokemonPrismOpenYouStatusCardTestTracker(PokemonTestTracker):
     """
-    A TestTracker for Pokémon Prism that ends an episode when the player opens the Pokegear.
+    A TestTracker for Pokémon Prism that ends an episode when the player opens the You status card.
     """
 
-    TERMINATION_TRUNCATION_METRIC = OpenPrismPokegearTerminateMetric
+    TERMINATION_TRUNCATION_METRIC = OpenPrismYouStatusCardTerminateMetric
     SUBGOAL_METRIC = DummySubGoalMetric

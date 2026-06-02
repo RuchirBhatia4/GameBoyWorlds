@@ -145,7 +145,7 @@ class OpenMapTerminateMetric(TerminationMetric):
         return False
 
 
-class OpenPrismPokegearTerminateMetric(TerminationMetric):
+class OpenPrismYouStatusCardTerminateMetric(TerminationMetric):
     REQUIRED_PARSER = PokemonPrismStateParser
 
     def determine_terminated(
@@ -156,8 +156,8 @@ class OpenPrismPokegearTerminateMetric(TerminationMetric):
             all_frames = recent_frames
         for frame in all_frames:
             self.state_parser: PokemonPrismStateParser
-            if self.state_parser.named_region_matches_target(
-                frame, "pokegear_top_left"
+            if self.state_parser.named_region_matches_multi_target(
+                frame, "screen", "you_status_card"
             ):
                 return True
         return False
